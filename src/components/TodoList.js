@@ -6,8 +6,6 @@ const TodoList = () => {
     <div className="TodoList">
       <TodoListItem />
       <TodoListItem />
-      <TodoListItem />
-      <TodoListItem />
     </div>
   );
 };
