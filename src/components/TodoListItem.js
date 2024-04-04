@@ -1,23 +1,25 @@
+import classNames from "classnames";
 import {
   MdCheckBox,
   MdCheckBoxOutlineBlank,
   MdRemoveCircleOutline,
 } from "react-icons/md";
 import "../styles/TodoListItem.scss";
-import classNames from "classnames";
-import { useState } from "react";
 
-const TodoListItem = () => {
-  // 임시 상태관리 코드 삭제요망
-  const [checked, satChecked] = useState(true);
+const TodoListItem = ({ todo, onRemove, onToggle }) => {
+  const { id, text, checked } = todo;
+
   return (
     <div className="TodoListItem">
-      <div className={classNames("checkbox", { checked })}>
+      <div
+        className={classNames("checkbox", { checked })}
+        onClick={() => onToggle(id)}
+      >
         {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
 
-        <div className="text">리액트 공부하기 </div>
+        <div className="text">{text}</div>
       </div>
-      <div className="remove">
+      <div className="remove" onClick={() => onRemove(id)}>
         <MdRemoveCircleOutline />
       </div>
     </div>
